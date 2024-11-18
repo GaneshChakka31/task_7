@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <!-- open Head Tag  -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registration Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/validation.js" type="text/javascript"></script>
+
+  </head>
+  <!-- cloesing head tag  -->
+  <body>
+   
+    <h1 style="text-align: center;">RegistrationForm</h1>
+    <form id="registrationForm" class="row g-3 pt-4">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <label for="name" class="form-label ">Name:</label>
+          <input type="text" id="name" name="name" class="form-control border border-secondary mt-2"   placeholder="Enter your Name">
+          <span class="error" id="nameError"></span>   
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-md-6">
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob"  min="2020-01-01" max="2024-12-31" name="dob" class="form-control  border border-secondary mt-3">
+          <span class="error" id="dobError"></span>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 " >
+          <label form="email">Email:</label>
+          <input type="text" id="email" name="email " class="form-control  border border-secondary mt-3" placeholder="Enter your Email">
+          <span class="error" id="emailError"></span>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <label form="phone">Phone:</label>
+          <input type="text" id="phone" name="phone"  class="form-control  border border-secondary mt-3" placeholder="Enter your Mobile number">
+          <span class="error" id="phoneError"></span>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <label form="Password">Password:</label>
+           <input type="password" id="Password" name="Password" class="form-control  border border-secondary mt-3" placeholder="**************">
+           <span class="error" id="PasswordError"></span>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <label form="Password">Confirm Password:</label>
+      <input type="password" id="ConfirmPassword" name="ConfirmPassword" class="form-control  border border-secondary mt-3"  placeholder="**************">
+      <span class="error" id="ConfirmPasswordError"></span>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 " >
+          <label form="gender" class="mt-4">Gender:</label>
+      <div>
+        <input type="radio" id="male" name="gender" value="Male" > Male
+        <input type="radio" id="female" name="gender" value="Female"> Female
+      </div>
+      <span class="error" id="genderError"></span>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <label form="country" class="mt-3">Country:</label>
+          <select id="country" name="country" class="form-control  border border-secondary" >
+          <option value="">Select Country</option>
+          <option value="US">India</option>
+          <option value="CA">Canada</option>
+          <option value="GB">United Kingdom</option>
+          <option value="USA">USA</option>
+          </select>
+          <span class="error" id="countryError"></span> <br><br>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12">
+          <div style="display: inline-flex;">
+            <input type="checkbox" id="privacyPolicy" name="privacyPolicy" value="I Agree">
+              <label for="privacyPolicy" > I Agree</label>
+            </div><br><br>
+            <span class="error" id="privacyPolicyError"></span>
+        </div>
+        <button type="button" class="col-sm-2 col-md-2 col-lg-2" style="justify-items: center;" onclick="hi(event)">Submit</button>
+    </form>
+<!--       
+    <script>
+   
+    const form = document.getElementById('registrationForm');
+    const name = document.getElementById('name');
+    const dob = document.getElementById('dob');
+    const email = document.getElementById('email');
+    const phone = document.getElementById('phone');
+    const Password = document.getElementById('Password');
+    const ConfirmPassword = document.getElementById('ConfirmPassword');
+    const gender = document.getElementsByName('gender');
+    const country = document.getElementById('country');
+    const privacyPolicy = document.getElementById('privacyPolicy');
+
+    // Error message spans
+    const nameError = document.getElementById('nameError');
+    const dobError = document.getElementById('dobError');
+    const emailError = document.getElementById('emailError');
+    const phoneError = document.getElementById('phoneError');
+    const PasswordError = document.getElementById('PasswordError');
+    const ConfirmPasswordError = document.getElementById('ConfirmPasswordError');
+    const genderError = document.getElementById('genderError');
+    const countryError = document.getElementById('countryError');
+    const privacyPolicyError = document.getElementById('privacyPolicyError');
+
+
+
+
+
+    // Validation function
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); 
+
+      let valid = true;
+
+      // Clear previous error messages
+      nameError.textContent = '';
+      dobError.textContent = '';
+      emailError.textContent = '';
+      phoneError.textContent = '';
+      PasswordError.textContent = '';
+      ConfirmPasswordError.textContent = '';
+      genderError.textContent = '';
+      countryError.textContent = '';
+      privacyPolicyError.textContent = '';
+
+      // Validate Name
+      if (!name.value.trim()) {
+        nameError.textContent = 'Please Enter The Name.';
+        valid = false;
+      }
+      else{
+        value = name.value;
+        console.log("value", value, isNaN(value));
+        if(!isNaN(value)){
+          nameError.textContent = 'Please Give letters only';
+          valid = false;
+        }
+        else if (!(value.charAt(0) >= 'A' && value.charAt(0) <= 'Z')){
+          console.log(!(value.charAt(0) >= 'A' && !value.charAt(0) <= 'Z'));
+          nameError.textContent = 'First letter must be in captial';
+          valid = false;
+        }
+      }
+
+      // Validate Date of Birth     
+      if (!dob.value) {
+        dobError.textContent = 'Please Enter The DOB.';
+        valid = false;
+      }
+
+      // Validate Email
+      if (!email.value.trim()) {
+        emailError.textContent = 'Please Enter The Email.';
+        valid = false;
+      }
+      else {
+         value = email.value;
+         if(!isNaN(value)){
+          emailError.textContent ='please enter the letters'
+        }
+        else if(!validateEmail(value)){
+          emailError.textContent ='please enter valid email'
+          valid = false;
+        }
+      }
+
+
+      // Validate Phone
+      if (!phone.value.trim()) {
+        phoneError.textContent = 'Please Enter The Phonenumber';
+        valid = false;
+      }
+
+      // else {
+      //    value = phone.value;
+      //    if(!validatePhone(value)){
+      //     console.log(value)
+      //     phoneError.textContent ='phone number is not valid'
+      //     valid = false;
+      //   }
+      // }
+
+      else{
+
+        if(phone.value.length != 13){
+          phoneError.textContent = 'Please Enter The valid Phonenumber with country code';
+          valid=false;
+        }
+        else if(!(phone.value.charAt(0) == "+")){
+          phoneError.textContent = 'Please Enter The valid Phonenumber with country code (ex : +91)';
+          valid=false;
+        }
+        else if(!(phone.value.charAt(3) >= "6" && phone.value.charAt(3) <= "9")){
+          phoneError.textContent = 'Please Enter The valid Phonenumber..';
+          valid=false;
+        }
+      }
+
+      // Validate password
+      if (!Password.value.trim()) {
+        PasswordError.textContent = 'please enter your Password.';
+        valid = false;
+      }
+
+      else {
+         value = Password.value;
+         if(!validatePassword(value)){
+          PasswordError.textContent ='Password must be at least 8 characters long, contain at least one uppercase letter, one number, and one special character.";'      
+          valid = false;
+        }
+      }
+
+      // Validate ConfirmPassword
+      if (!ConfirmPassword.value.trim()) {
+        ConfirmPasswordError.textContent = 'please enter your Confirm Password.';
+        valid = false;
+      }
+    
+      if (Password.value != ConfirmPassword.value) { 
+        console.log("value",value)
+        ConfirmPasswordError.textContent = 'Password does not match.';
+        valid = false;
+      }
+  
+      // Validate Gender
+      if (![...gender].some(r => r.checked)) {
+        genderError.textContent = 'Please select a gender.';
+        valid = false;
+      }
+
+      // Validate Country
+      if (!country.value) {
+        countryError.textContent = 'Please select a country.';
+        valid = false;
+      }
+
+      // Validate Privacy Policy Checkbox
+      if (!privacyPolicy.checked) {
+        privacyPolicyError.textContent = 'You must agree to the privacy policy.';
+        valid = false;
+      }
+
+      // If all fields are valid, submit the form
+      if (valid) {
+        alert('Form submitted successfully!');
+        form.reset();
+      }    
+
+      
+    });
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+
+    function validatePassword(password) {
+      const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+      return passwordRegex.test(password);
+    }
+
+//     function validatePhone(Phone) {
+//     const PhoneRegex =  /^([+]\d{2}[ ])?\d{10}$/
+//     return PhoneRegex.test(Phone);
+// }
+    </script>  -->
+</body>
+</html>

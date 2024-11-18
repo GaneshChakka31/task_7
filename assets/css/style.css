@@ -1,0 +1,16 @@
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+ background-color:lightslategrey;
+ 
+}
+.error {
+  color: red;
+  font-size: 1.0em;
+}
+button{
+  background-color: green;
+  border-radius: 50px;
+  width: 20%;
+}
